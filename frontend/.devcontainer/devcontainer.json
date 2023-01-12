@@ -1,0 +1,11 @@
+{
+    "name": "frontend-container",
+    "service": "frontend",
+    "workspaceFolder": "/workspace",
+    "dockerComposeFile": [
+        "../../docker/docker-compose-base.yml",
+        "../../docker/docker-compose-development.yml"
+    ],
+    "extensions": [
+    ]
+}

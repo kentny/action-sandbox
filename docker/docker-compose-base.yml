@@ -1,0 +1,40 @@
+version: '3.6'
+services:
+  # mysql:
+  #   container_name: mysql
+  #   build: ../docker/mysql
+  #   environment:
+  #     MYSQL_DATABASE: mysqldb
+  #     MYSQL_USER: user
+  #     MYSQL_PASSWORD: password
+  #     MYSQL_ROOT_PASSWORD: rootpassword
+  #   ports:
+  #     - 3306:3306
+  #   volumes:
+  #     - ./mysql/initdb:/docker-entrypoint-initdb.d
+  #     - mysql_db:/var/lib/mysql
+  api:
+    container_name: api
+    build: ../api
+    # depends_on:
+    #   - mysql
+    ports:
+      - 8080:8080
+    tty: true
+    volumes:
+      - ../api:/workspace:cached
+
+  frontend:
+    container_name: frontend
+    build: 
+      context: ../frontend
+      target: base
+    ports:
+      - 3000:3000
+    volumes:
+      - ../frontend:/workspace:cached
+    stdin_open: true
+    tty: true
+# volumes:
+#   mysql_db:
+#     driver: local

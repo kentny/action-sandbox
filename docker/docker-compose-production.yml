@@ -1,0 +1,16 @@
+version: '3.6'
+services:
+  api:
+    environment:
+      - SPRING_PROFILE_ACTIVE=production
+    ports:
+      - 8080:8080
+
+  frontend:
+    image: imageName
+    build: 
+      target: base
+    environment:
+      - REACT_APP_API_SERVER=http://api:8080/api
+    ports:
+      - 3000:3000
