@@ -5,7 +5,8 @@ FROM node:18 AS base
 FROM base AS builder
 COPY . /workspace
 WORKDIR /workspace
-RUN npm run build
+RUN npm install && \
+    npm run build
 
 # production
 FROM nginx:latest AS production
