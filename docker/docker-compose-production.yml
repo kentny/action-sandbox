@@ -9,8 +9,6 @@ services:
 
   frontend:
     image: ${FRONTEND_SERVER_IMAGE}
-    build: 
-      target: base
     environment:
       - REACT_APP_API_SERVER=http://api:8080/api
     ports:

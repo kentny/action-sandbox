@@ -1,7 +1,7 @@
 # base
 FROM node:18 AS base
 
-FROM base AS npm-install
+FROM base AS setup
 COPY . /workspace
 WORKDIR /workspace
 RUN npm install
