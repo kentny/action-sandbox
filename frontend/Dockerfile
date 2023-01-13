@@ -6,7 +6,7 @@ COPY . /workspace
 WORKDIR /workspace
 RUN npm install
 
-FROM npm-install AS test
+FROM setup AS test
 RUN npm run test
 
 FROM test AS build
