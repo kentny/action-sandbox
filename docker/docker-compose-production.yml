@@ -1,13 +1,14 @@
 version: '3.6'
 services:
   api:
+    image: ${API_SERVER_IMAGE}
     environment:
       - SPRING_PROFILE_ACTIVE=production
     ports:
       - 8080:8080
 
   frontend:
-    image: imageName
+    image: ${FRONTEND_SERVER_IMAGE}
     build: 
       target: base
     environment:
