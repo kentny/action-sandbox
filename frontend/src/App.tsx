@@ -5,7 +5,7 @@ function App() {
 
     return <>
         <h1>
-            Hello App
+            Hello App - 2
         </h1>
         <button onClick={async () => {
             const response = await fetch(`${process.env.REACT_APP_API_SERVER}/hello`, { mode: 'cors' })
