@@ -21,7 +21,7 @@ jobs:
 
       - name: Test
         run: |
-          docker build --target production -t $TEMP_IMAGE_NAME:latest .
+          docker build --target production -t $TEMP_IMAGE_NAME:latest --build-arg REACT_APP_API_SERVER=/api .
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
