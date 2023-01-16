@@ -46,6 +46,7 @@ permissions:
 
 jobs:
   frontend-test-build-image:
+    name: Frontend Container - Test and Build
     runs-on: ubuntu-20.04
     env:
       TEMP_IMAGE_NAME: temp-frontend-image
@@ -81,6 +82,7 @@ jobs:
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
 
   api-test-build-image:
+    name: API Container - Test and Build
     runs-on: ubuntu-20.04
     env:
       TEMP_IMAGE_NAME: temp-api-image
