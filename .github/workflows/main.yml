@@ -153,24 +153,24 @@ jobs:
       - name: Fill in the new image ID in the Amazon ECS task definition for frontend
         id: render-frontend-task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
-        env:
-          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: ${{ secrets.AWS_ECR_FRONTEND_SERVER_REPOSITORY }}
+        # env:
+        #   ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        #   ECR_REPOSITORY: ${{ secrets.AWS_ECR_FRONTEND_SERVER_REPOSITORY }}
         with:
           task-definition: ${{ env.ECS_TASK_DEFINITION }}
           container-name: frontend
-          image: $ECR_REGISTRY/$ECR_REPOSITORY
+          image: ${{ steps.login-ecr.outputs.registry }}/${{ secrets.AWS_ECR_FRONTEND_SERVER_REPOSITORY }}
 
       - name: Fill in the new image ID in the Amazon ECS task definition for api
         id: render-api-task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
-        env:
-          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: ${{ secrets.AWS_ECR_API_SERVER_REPOSITORY }}
+        # env:
+        #   ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        #   ECR_REPOSITORY: ${{ secrets.AWS_ECR_API_SERVER_REPOSITORY }}
         with:
           task-definition: ${{ env.ECS_TASK_DEFINITION }}
           container-name: api
-          image: $ECR_REGISTRY/$ECR_REPOSITORY
+          image: ${{ steps.login-ecr.outputs.registry }}/${{ secrets.AWS_ECR_API_SERVER_REPOSITORY }}
 
       - name: Deploy Amazon ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
